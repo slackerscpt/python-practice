@@ -5,19 +5,24 @@ import pandas as pd
 
 def increaseAverage(total_pins, total_games):
     print('-- Checking Averages --')
-    print (total_pins)
-    print (total_games)
     current_Average = int (total_pins / total_games)
-    max_average = (total_pins + 900) / (total_games + 3)
-
-    min_average = total_pins / (total_games + 3)
+    max_average = int ((total_pins + 900) / (total_games + 3))
+    min_average = int(total_pins / (total_games + 3))
     high_diff = (int(max_average) * (total_games + 3)) - total_pins
 
 
-    print (min_average)
-    print (current_Average)
-    print (max_average)
+    #Need to take a range. 1 - max over
+    #So if current is 200 and max is 204, want to determine what should be shot to get each average. 
 
+    average_boosts = []    
+
+    for i in range(1, (max_average - current_Average)+1):
+        seek_average = current_Average + i
+        seek_pins = (seek_average * (total_games + 3)) - total_pins
+        average_boosts.append([seek_average, seek_pins])
+
+    boost_data = pd.DataFrame(average_boosts, columns= ['Average', 'Series'])
+    print (boost_data)
 
 df = pd.read_csv('Tuesday-2019-Stats.csv')
 print(df)
