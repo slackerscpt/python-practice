@@ -24,38 +24,28 @@ def increaseAverage(total_pins, total_games):
     boost_data = pd.DataFrame(average_boosts, columns= ['Average', 'Series'])
     print (boost_data)
 
-df = pd.read_csv('Tuesday-2019-Stats.csv')
-print(df)
+def readLeagues():
+    leagueData = pd.read_csv('Leagues.csv')
+    print (leagueData)
+    activeLeagues = leagueData[leagueData['active'] == True]
+    print (activeLeagues)
 
-    # How to add data to datafram
-    # newData = {
-    #     "Week": 30,
-    #     "Date":  "03/17/2020",
-    #     "Gm1": 300,
-    #     "Gm2": 300,
-    #     "Gm3": 300,
-    #     "SS": 900,
-    #     "HCP": 129,
-    #     "HS": 1029,
-    #     "Avg<br />Before": 202,
-    #     "Avg<br />After": 202,
-    #     "Todays<br />Avg": 300,
-    #     "+/-<br />Avg": 85
-    # }
 
-    # df.loc[df.shape[0]] = [29, "03/17/2020", 300, 300, 300, 900, 129, 1029, 202, 202, 300, 85]
-    # print(df)
 
-    # df = df.append(newData, ignore_index=True)
+def getLeagueData(leagueFile):
+    df = pd.read_csv(leagueFile)
+    print(df)
 
-    # print (df)
 
-# print(df.mean())
-# print(df.count())
-# print(df.sum())
 
-total_pins = sum(df[['Gm1', 'Gm2', 'Gm3']].sum())
-game_count = 3 * df['Gm1'].count()
+    # print(df.mean())
+    # print(df.count())
+    # print(df.sum())
 
-increaseAverage(total_pins, game_count)
+    total_pins = sum(df[['Gm1', 'Gm2', 'Gm3']].sum())
+    game_count = 3 * df['Gm1'].count()
 
+    increaseAverage(total_pins, game_count)
+
+readLeagues()
+getLeagueData(leagueFile='Tuesday-2019-Stats.csv')

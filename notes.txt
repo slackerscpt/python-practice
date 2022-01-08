@@ -1,0 +1,20 @@
+How to add data to datafram
+newData = {
+    "Week": 30,
+    "Date":  "03/17/2020",
+    "Gm1": 300,
+    "Gm2": 300,
+    "Gm3": 300,
+    "SS": 900,
+    "HCP": 129,
+    "HS": 1029,
+    "Avg<br />Before": 202,
+    "Avg<br />After": 202,
+    "Todays<br />Avg": 300,
+    "+/-<br />Avg": 85
+}
+
+df = df.append(newData, ignore_index=True)
+
+df.loc[df.shape[0]] = [29, "03/17/2020", 300, 300, 300, 900, 129, 1029, 202, 202, 300, 85]
+
