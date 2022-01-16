@@ -13,9 +13,11 @@ def pickLeague(leagueFiles):
     user_pick = int(input("Which league data: "))
 
     leagueData = pd.read_csv(leagueFiles[user_pick])
+    print(leagueData)
     return leagueData
 
 def leagueStats(leagueData):
+    #Need to filter out weeks that were not bowled. 
     print (*leagueData[['Gm1', 'Gm2', 'Gm3']].mean())
     #* removes header and dtype
     print (max(leagueData[['Gm1', 'Gm2', 'Gm3']].max()))
